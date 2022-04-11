@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import pytest
 import matplotlib.pyplot as plt
 
 
@@ -18,7 +19,7 @@ class NameFrequency:
     def preparingData(self, file_name, column_name):
         data = pd.read_csv(file_name)
         data.dropna(inplace=True)
-        data_frame = dict(data[column_name].str.split(" ", n=1, expand=True))
+        data_frame = data[column_name].str.split(" ", n=1, expand=True)
         self.data_frame = data_frame
         if isinstance(self.data_frame, pd.DataFrame):
             return True
@@ -91,6 +92,3 @@ class NameFrequency:
             else:
                 return userInput
                 break
-
-
-
